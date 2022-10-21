@@ -1,0 +1,8 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: nextcloud-dav
+spec:
+  replacePathRegex:
+    regex: ^/.well-known/ca(l|rd)dav
+    replacement: /remote.php/dav/
