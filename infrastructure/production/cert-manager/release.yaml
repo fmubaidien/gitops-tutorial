@@ -399,9 +399,7 @@ spec:
         #   cpu: 10m
         #   memory: 32Mi
 
-      nodeSelector:
-        doks.digitalocean.com/node-pool: josa-cloud-np
-
+      nodeSelector: {}
       affinity: {}
 
       tolerations: []
