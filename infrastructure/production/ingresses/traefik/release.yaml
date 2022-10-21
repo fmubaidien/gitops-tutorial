@@ -585,8 +585,7 @@ spec:
     #               values:
     #                 - {{ template "traefik.name" . }}
     #         topologyKey: kubernetes.io/hostname
-    nodeSelector:
-      doks.digitalocean.com/node-pool: web-np
+    nodeSelector: {}
     tolerations: []
 
     # Pods can have priority.
