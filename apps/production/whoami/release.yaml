@@ -21,9 +21,9 @@ spec:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/ingress.class: nginx
+        kubernetes.io/ingress.class: traefik
         cert-manager.io/cluster-issuer: "letsencrypt"
-        external-dns.alpha.kubernetes.io/target: nginx.ingress.cloud.josa.ngo
+        external-dns.alpha.kubernetes.io/target: lb.xpand.josa.ngo
         external-dns.alpha.kubernetes.io/ingress-hostname-source: defined-hosts-only
         start.josa.ngo/type: application
         start.josa.ngo/name: "Whoami"
