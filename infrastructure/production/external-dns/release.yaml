@@ -611,15 +611,6 @@ spec:
     ##
     domainFilters:
       - josa.ngo
-      - josa.dev
-      - jordanopensource.org
-      - josa.community
-      - josa.technology
-      - josa.company
-      - josa.services
-      - amanraqami.com
-      - amanraqami.org
-      - amanraqami.net
     ## @param excludeDomains Exclude subdomains (optional)
     ##
     excludeDomains: []
@@ -754,8 +745,7 @@ spec:
     ## @param nodeSelector Node labels for pod assignment
     ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
     ##
-    nodeSelector:
-      doks.digitalocean.com/node-pool: josa-cloud-np
+    nodeSelector: {}
     ## @param tolerations Tolerations for pod assignment
     ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
     ##
