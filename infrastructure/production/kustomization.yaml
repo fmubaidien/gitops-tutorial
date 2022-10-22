@@ -4,6 +4,6 @@ resources:
   - alerts
   - sources
   - providers
-  - cert-manager
+  # - cert-manager
   - external-dns
   - ingresses
