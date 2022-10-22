@@ -288,9 +288,6 @@ spec:
       # # Add proxy protocol trusted ips
       - --entryPoints.web.proxyProtocol.trustedIPs=10.135.0.0/16
       - --entryPoints.websecure.proxyProtocol.trustedIPs=10.135.0.0/16
-      ## Middlewares
-      - --entrypoints.websecure.http.middlewares=ingresses-security-headers@kubernetescrd
-      - --entrypoints.websecure.http.middlewares=ingresses-authelia-auth@kubernetescrd
 
     # Environment variables to be passed to Traefik's binary
     env: []
@@ -372,45 +369,14 @@ spec:
         # Set TLS at the entrypoint
         # https://doc.traefik.io/traefik/routing/entrypoints/#tls
         tls:
-          enabled: true
+          enabled: false
           # this is the name of a TLSOption definition
           options: ""
           certResolver: ""
           domains:
             - main: "josa.ngo"
               sans:
-                - "*.josa.ngo"
-                - "*.cloud.josa.ngo"
-                - "*.web.josa.ngo"
-                - "*.api.josa.ngo"
-                - "*.dev.josa.ngo"
-                - "*.test.josa.ngo"
-                - "*.prod.josa.ngo"
-                - "*.cloud.dev.josa.ngo"
-                - "*.cloud.test.josa.ngo"
-                - "*.cloud.prod.josa.ngo"
-                - "*.web.dev.josa.ngo"
-                - "*.web.test.josa.ngo"
-                - "*.web.prod.josa.ngo"
-                - "*.api.dev.josa.ngo"
-                - "*.api.test.josa.ngo"
-                - "*.api.prod.josa.ngo"
-                - "*.osint.josa.ngo"
-            - main: "josa.dev"
-              sans:
-                - "*.josa.dev"
-            - main: "jordanopensource.org"
-              sans:
-                - "*.jordanopensource.org"
-            - main: "amanraqami.org"
-              sans:
-                - "*.amanraqami.org"
-            - main: "amanraqami.com"
-              sans:
-                - "*.amanraqami.com"
-            - main: "amanraqami.net"
-              sans:
-                - "*.amanraqami.net"
+                - "*.xpand.josa.ngo"
           # - main: example.com
           #   sans:
           #     - foo.example.com
@@ -455,8 +421,8 @@ spec:
         service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "true"
         service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
         service.kubernetes.io/do-loadbalancer-disown: "false"
-        service.beta.kubernetes.io/do-loadbalancer-hostname: "traefik.ingress.cloud.josa.ngo"
-        service.beta.kubernetes.io/do-loadbalancer-name: "traefik.ingress.cloud.josa.ngo"
+        service.beta.kubernetes.io/do-loadbalancer-hostname: "lb.xpand.josa.ngo"
+        service.beta.kubernetes.io/do-loadbalancer-name: "lb.xpand.josa.ngo"
       # Additional annotations for TCP service only
       annotationsTCP: {}
       # Additional annotations for UDP service only
@@ -467,14 +433,12 @@ spec:
       # Cannot contain type, selector or ports entries.
       spec:
         externalTrafficPolicy: Local
-        loadBalancerIP: "144.126.246.65"
         # clusterIP: "2.3.4.5"
       loadBalancerSourceRanges:
         - 10.135.0.0/16
         # - 192.168.0.1/32
         # - 172.16.0.0/16
       externalIPs:
-        - 144.126.246.65
         # - 1.2.3.4
       # One of SingleStack, PreferDualStack, or RequireDualStack.
       # ipFamilyPolicy: SingleStack

@@ -3,4 +3,3 @@ kind: Kustomization
 namespace: ingresses
 resources:
   - release.yaml
-  - middlewares
